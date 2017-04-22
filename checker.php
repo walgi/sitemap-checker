@@ -11,7 +11,7 @@
 	$reader->open($filePath);
 	$i = 0;
 
-	while($reader->read() && $i < 10){
+	while($reader->read()){
 		if ($reader->nodeType == XMLReader::ELEMENT && $reader->name == 'url') {
 			$node = new \SimpleXMLElement($reader->readOuterXML());
 			$url = (string) $node->loc; 
@@ -31,6 +31,6 @@
 		}
 	}
 
-	echo 'Done!';
+	echo 'Done! Total ' . $i . " urls checked \n";
 
 
